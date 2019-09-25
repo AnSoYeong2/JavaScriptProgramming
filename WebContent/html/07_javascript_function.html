@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+		<script type="text/javascript">	
+			//함수 선언
+			//fun1은 함수 이름이 아니라 함수 객체를 참조하는 것
+			//근데 사람들은 그냥 이거 함수 이름이라고 함
+			function fun1(){
+				console.log("fun1() 호출");
+			}
+			
+			//함수 객체 
+			//fun2: 함수 객체 참조하는 변수
+			
+			var fun2 = function(){
+				console.log("fun2() 호출");
+			};
+			
+			//함수 호출
+			fun1();
+			fun2();//fun2가 참조하는 함수 객체를 참조해라를 의미.
+			
+			var fun3 = fun1;
+			fun3();
+			
+			//매개변수는 var도 붙이지 않는다 그냥 단순히 변수명만 사용
+			function fun4(x, y){
+				var result = x+y;
+				console.log(result); //함수는 리턴값이 있을 수도 없을 수도있음 이렇게 단순 출력하면 리턴값이 없는 것
+			}
+			fun(3,5);//리턴 없을 시 호출 방법
+			
+			function fun5(x,y){
+				var result = x+y;
+				return result;//이렇게 하면 리턴 값이 있는 것
+			}
+			//fun5 호출, 리턴 있을 시 호출 방법
+			var rst = run5(3,5);
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
