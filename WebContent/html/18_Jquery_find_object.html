@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="../common/js/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript">
+			function fun1(){
+				//얘네는 참조하는 객체가 다름(dom방식과 jquery방식 : 같은 변수명에 저장하여도 객체가 다름)
+				//var domimg1 = document.querySelector("#img1");//이미지 자체를 리턴
+				var img1 = $("#img1");//Jquery객체를 리턴
+				img1.attr("src", "../common/image/Lighthouse.jpg");//몇개의 img1이 있는지 모르겠지만 일관적으로 다 바꿔버림 근데 다행이도 img1은 한개
+			}
+			function fun2(){
+				var img2 = $(".img2");
+				img2.attr("src", "../common/image/Chrysanthemum.jpg");
+			}
+			function fun3(){
+				var img3 = $("img"); //jquery는 일괄 처리기 때문에 모든 img 태그가 다바뀜
+				img3.attr("src", "../common/image/Tulips.jpg");
+			}
+			function fun4(){
+				$("#div1 img").attr("src","../common/image/Chrysanthemum.jpg");
+			}
+			function fun5(){
+				var InputMid = $("#joinForm input[name=mid]");
+				console.log(InputMid.val());
+				
+				var inputPass = $("#joinForm input[name=mpassword]");
+				var password = inputPass.val();
+				if(password == ""){
+					window.alert("패스워드 안 넣을래?");
+				}else if(password.length<8){
+					window.alert("패스워드 똑바로 안 넣을래?");
+				}
+				var inputHobby =  $("#joinForm input[name=hobby]");
+				var InputHobbyChecked = $("#joinForm input[name=hobby]:checked");
+				for(var i=0; i <InputHobbyChecked.length;i++){
+					console.log(InputHobbyChecked[i].value);//InputHobbyChecked[i] 이렇게 작성하게 되면 jquery객체가 아니라 dom객체이다. 따라서 val()또한 쓸 수 없다.
+				}
+				//console.log(InputHobbyChecked.val());//val()은 하나의 값만 찾아내기 때문에 안돼
+				
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="fun1()">아이디로 찾기</button> <br/>
+		<button onclick="fun2()">클래스로 찾기</button>
+		<button onclick="fun3()">태그명으로 찾기</button><!-- 제일 안쓰는 것 -->
+		<button onclick="fun4()">내부 찾기</button>
+		<button onclick="fun5()">querySelctor로 폼 양식 찾기</button>
+		<button onclick="fun6()">이름으로 폼 양식 찾기</button>
+		<hr/>
+		
+		<img id="img1" src ="../common/image/Desert.jpg" width="200px">
+		
+		<br/>
+		
+		<img class="img2" src ="../common/image/Desert.jpg" width="200px">
+		<img class="img2" src ="../common/image/Desert.jpg" width="200px">
+		
+		<br/>
+		<div id="div1">
+			<img src ="../common/image/Desert.jpg" width="200px">
+			<img src ="../common/image/Desert.jpg" width="200px">
+		</div>
+		
+		<br/>
+		
+		<form id="joinForm" name="joinForm">
+			아이디: <input name="mid" type="text"/> <br/>
+			비밀번호 : <input name="mpassword" type="password"/> <br/>
+			취미: 
+				<input name="hobby" type="checkbox" value="movie"/>영화
+				<input name="hobby" type="checkbox" value="trip"/>여행
+				<input name="hobby" type="checkbox" value="coding"/>코딩
+		</form>
+	</body>
+</html>
